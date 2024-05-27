@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- UI that connects to express server and displays the fetched data(url in this case) -->
+    <h1>URL Shortener</h1>
+    <form>
+        <label for="url">Enter your URL: </label>
+
+        <input name="url" id="url" type="text" placeholder="https://example.com">
+
+        <button id="btn" type="button">Generate</button>
+    </form>
+    <!-- JavaScript code to display the Short URL on page -->
+    <script>
+        const btn = document.getElementById('btn')
+        const getUrl = (id) => {
+            const p = document.createElement('p')
+            p.style.color = 'darkblue';
+            p.innerText = `http://localhost:3000/url/${id}`
+            document.body.appendChild(p);
+        }
+        const postData = async () => {
+            const input = document.body.querySelector('input').value
+            console.log('input value: ', input)
+            const data = {
+                url: input
+            }
+            const res = await fetch('http://localhost:3000/url', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            console.log('response: ', res)
+            const result = await res.json();
+            console.log('result: ', result);
+
+            getUrl(result.id)
+        }
+
+        btn.addEventListener('click', (e) => {
+            postData()
+
+        });
+
+    </script>
+</body>
+
+
+</html>

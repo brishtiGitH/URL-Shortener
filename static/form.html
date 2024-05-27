@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>URL Shortener</h1>
+    <form action="http://localhost:3000/url" method="POST">
+        <label for="url">Enter your URL: </label>
+
+        <input name="url" id="url" type="text" placeholder="https://example.com">
+
+        <button id="btn" type="submit">Generate</button>
+    </form>
+
+</body>
+
+
+</html>
