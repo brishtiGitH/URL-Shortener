@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Log In</h1>
+    <% if (locals.error) { %>
+        <h4>
+            <%= error %>
+        </h4>
+        <% } %>
+            <% if (locals.isSignedUp) { %>
+                <h4>
+                    <%= isSignedUp %>
+                </h4>
+                <% } %>
+                    <form action="http://localhost:3000/user/login" method="POST">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" placeholder="your email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="your secret" name="password" required>
+                        </div>
+                        <button type="submit">Log In</button>
+                    </form>
+</body>
+
+</html>
