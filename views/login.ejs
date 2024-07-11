@@ -16,16 +16,16 @@
 <body>
     <h1>Log In</h1>
     <% if (locals.error) { %>
-        <h4>
+        <h4 style="color: red;">
             <%= error %>
         </h4>
         <% } %>
             <% if (locals.isSignedUp) { %>
-                <h4>
+                <h4 style="color: red;">
                     <%= isSignedUp %>
                 </h4>
                 <% } %>
-                    <form action="http://localhost:3000/user/login" method="POST">
+                    <form action="/user/login" method="POST">
                         <div>
                             <label for="email">Email</label>
                             <input type="email" placeholder="your email" name="email" required>
