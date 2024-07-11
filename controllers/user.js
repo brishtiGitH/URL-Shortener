@@ -1,4 +1,6 @@
 const User = require('../models/user')
+const { v4: uuidv4 } = require('uuid');
+const { setUser, getUser } = require('../service/authCookie')
 
 const createNewUser = async (req, res) => {
     const { name, email, password } = req.body;
@@ -24,6 +26,9 @@ const loginUser = async (req, res) => {
         if (!user) {
             return res.render('login', { isSignedUp: "Wrong email or password." })
         }
+        const uid = uuidv4();
+        setUser(uid, user);
+        res.cookie("sessionId", uid)  //store id as a cookie
 
         res.redirect('/')
     } catch (error) {
