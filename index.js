@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors');
+const cookieParser = require('cookie-parser')
+const { restrictAccess } = require('./middlewares/auth')
 
 const urlRouter = require('./routes/url')
 const userRouter = require('./routes/user')
@@ -15,9 +17,10 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())  //bodyparser- to parse the incoming json payload and initialize req.body
+app.use(cookieParser())
 
 app.use('/', staticRouter)
-app.use('/url', urlRouter)
+app.use('/url', restrictAccess, urlRouter)
 app.use('/user', userRouter)  //localhost:3000/user
 
 app.listen(3000, () => console.log('Server Started!'))

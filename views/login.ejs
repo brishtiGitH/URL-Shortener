@@ -36,6 +36,9 @@
                         </div>
                         <button type="submit">Log In</button>
                     </form>
+                    <% if (locals.isLoggedIn) { %>
+                        <h4>You are required to log in to use our service.</h4>
+                        <% } %>
 </body>
 
 </html>
