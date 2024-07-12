@@ -20,7 +20,7 @@ app.use(express.json())  //bodyparser- to parse the incoming json payload and in
 app.use(cookieParser())
 
 app.use('/', staticRouter)
-app.use('/url', restrictAccess, urlRouter)
+app.use('/url', restrictAccess, urlRouter)  //restrictAccess is triggered whenever a request is received at path starting with /url
 app.use('/user', userRouter)  //localhost:3000/user
 
 app.listen(3000, () => console.log('Server Started!'))

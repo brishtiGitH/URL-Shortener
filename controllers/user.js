@@ -20,8 +20,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email, password })  //if i put wrong details, login page is rendered w error msg BUT Node app is crashing.
-        //fixed by adding "return" keyword before sending response.
+        const user = await User.findOne({ email, password })
         console.log('user', user)
         if (!user) {
             return res.render('login', { isSignedUp: "Wrong email or password." })
