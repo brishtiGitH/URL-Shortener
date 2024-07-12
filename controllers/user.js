@@ -14,7 +14,7 @@ const createNewUser = async (req, res) => {
         email,
         password
     })
-    return res.redirect('/')
+    return res.redirect('/login')
 }
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
