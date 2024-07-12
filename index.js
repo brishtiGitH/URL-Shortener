@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
-const { restrictAccess } = require('./middlewares/auth')
+const { restrictAccess, checkAuth } = require('./middlewares/auth')
 
 const urlRouter = require('./routes/url')
 const userRouter = require('./routes/user')
@@ -19,7 +19,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())  //bodyparser- to parse the incoming json payload and initialize req.body
 app.use(cookieParser())
 
-app.use('/', staticRouter)
+// app.use('/', staticRouter)
+app.use('/', checkAuth, staticRouter)
 app.use('/url', restrictAccess, urlRouter)  //restrictAccess is triggered whenever a request is received at path starting with /url
 app.use('/user', userRouter)  //localhost:3000/user
 

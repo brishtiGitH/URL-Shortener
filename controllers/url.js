@@ -12,7 +12,8 @@ const generateNewURL = async (req, res) => {
     const newURL = await URL.create({
         shortID: shortId,
         redirectURL: body.url,
-        visitHistory: []
+        visitHistory: [],
+        createdBy: req.user._id
     })
     // res.status(200).send({ id: shortId })
     res.render('home', {

@@ -1,38 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>URL Shortener</title>
-    <style>
-      body {
-        text-align: center;
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-      }
-    </style>
-  </head>
 
-  <body>
-    <h1>URL Shortener</h1>
-    <form action="http://localhost:3000/url" method="POST">
-      <label for="url">Enter your URL: </label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
 
-      <input
-        name="url"
-        id="url"
-        type="text"
-        placeholder="https://example.com"
-      />
+    table {
 
-      <button id="btn" type="submit">Generate</button>
-    </form>
-    <div>
-      <% if (locals.link) { %>
+      width: 1000px;
+      height: auto;
+      margin: 30px auto;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>URL Shortener</h1>
+  <form action="http://localhost:3000/url" method="POST">
+    <label for="url">Enter your URL: </label>
+
+    <input name="url" id="url" type="text" placeholder="https://example.com" />
+
+    <button id="btn" type="submit">Generate</button>
+  </form>
+  <div>
+    <% if (locals.link) { %>
       <p>
         Short URL -
-        <b> <%= link %> </b>
+        <b>
+          <%= link %>
+        </b>
       </p>
       <% } %>
+  </div>
+  <div>
+    <div class="urlAnalytics">
+      <% if (locals.urls) { %>
+        <table>
+          <tr>
+            <th>Short ID</th>
+            <th>Link</th>
+            <th>Redirect Site</th>
+            <th>Total clicks</th>
+          </tr>
+          <tbody>
+            <% urls.forEach(url=> { %>
+              <tr>
+                <td>
+                  <%= url.shortID %>
+                </td>
+                <td>http://localhost:3000/url/<%= url.shortID %>
+                </td>
+                <td>
+                  <%= url.redirectURL %>
+                </td>
+                <td>
+                  <%= url.visitHistory.length %>
+                </td>
+              </tr>
+              <% }) %>
+
+
+          </tbody>
+        </table>
+        <% } %>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
