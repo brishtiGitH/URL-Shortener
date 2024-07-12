@@ -27,6 +27,7 @@ const loginUser = async (req, res) => {
         }
         const uid = uuidv4();
         setUser(uid, user);
+
         res.cookie("sessionId", uid)  //store id as a cookie
 
         res.redirect('/')
