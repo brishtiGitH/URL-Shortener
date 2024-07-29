@@ -2,7 +2,8 @@ const { getUser } = require('../service/authCookie')
 
 const restrictAccess = (req, res, next) => {
     const id = req.cookies?.sessionId;
-    if (!id) return res.render('login', {
+
+    if (!id) return res.render('login', {         //LOGIN uses sessionId (stored as a cookie) stored in the client's browser. if the cookie i.e the sessionId is deleted, user need to login again to use the service.
         isLoggedIn: false
     })
     const user = getUser(id);
