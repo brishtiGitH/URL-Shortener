@@ -30,7 +30,7 @@
 
 <body>
   <h1>URL Shortener</h1>
-  <form action="http://localhost:3000/url" method="POST">
+  <form action="http://localhost:8000/url" method="POST">
     <label for="url">Enter your URL: </label>
 
     <input name="url" id="url" type="text" placeholder="https://example.com" />
@@ -63,7 +63,7 @@
                 <td>
                   <%= url.shortID %>
                 </td>
-                <td>http://localhost:3000/url/<%= url.shortID %>
+                <td>http://localhost:8000/url/<%= url.shortID %>
                 </td>
                 <td>
                   <%= url.redirectURL %>

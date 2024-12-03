@@ -24,4 +24,4 @@ app.use('/', checkAuth, staticRouter)
 app.use('/url', restrictAccess, urlRouter)  //restrictAccess is triggered whenever a request is received at path starting with /url
 app.use('/user', userRouter)  //localhost:3000/user
 
-app.listen(3000, () => console.log('Server Started!'))
+app.listen(8000, () => console.log('Server Started!'))
