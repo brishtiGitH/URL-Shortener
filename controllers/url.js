@@ -17,7 +17,7 @@ const generateNewURL = async (req, res) => {
     })
     // res.status(200).send({ id: shortId })
     res.render('home', {
-        link: `http://localhost:3000/url/${shortId}`
+        link: `http://localhost:8000/url/${shortId}`
     })
 }
 const handleRedirectURL = async (req, res) => {
