@@ -26,7 +26,7 @@ const loginUser = async (req, res) => {
             return res.render('login', { isSignedUp: "Wrong email or password." })
         }
         const uid = uuidv4();
-        setUser(uid, user);
+        setUser(uid, user);  //recording data in the server by using map ds
 
         res.cookie("sessionId", uid)  //store id as a cookie
 
