@@ -6,41 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-    </style>
+
 </head>
 
-<body>
-    <h1>Log In</h1>
-    <% if (locals.error) { %>
-        <h4 style="color: red;">
-            <%= error %>
-        </h4>
-        <% } %>
-            <% if (locals.isSignedUp) { %>
-                <h4 style="color: red;">
-                    <%= isSignedUp %>
-                </h4>
-                <% } %>
-                    <form action="/user/login" method="POST">
-                        <div>
-                            <label for="email">Email</label>
-                            <input type="email" placeholder="your email" name="email" required>
-                        </div>
-                        <div>
-                            <label for="password">Password</label>
-                            <input type="password" placeholder="your secret" name="password" required>
-                        </div>
-                        <button type="submit">Log In</button>
-                    </form>
-                    <p>New Member? <a href="/signup">Sign Up</a></p>
-                    <% if (!locals.isLoggedIn) { %>
-                        <h4>You are required to log in to use our service.</h4>
-                        <% } %>
+<body class="text-center p-5">
+    <div class="container w-">
+        <h1 class="text-xl font-semibold my-5">Log In</h1>
+        <% if (locals.error) { %>
+            <h4 style="color: red;">
+                <%= error %>
+            </h4>
+            <% } %>
+                <% if (locals.isSignedUp) { %>
+                    <h4 style="color: red;">
+                        <%= isSignedUp %>
+                    </h4>
+                    <% } %>
+                        <form action="/user/login" method="POST">
+                            <div class="my-2">
+                                <label for="email">Email</label>
+                                <input class="border mx-3 rounded-sm p-2" type="email" placeholder="your email"
+                                    name="email" required>
+                            </div>
+                            <div class="my-2">
+                                <label for="password">Password</label>
+                                <input class="border mx-3 rounded-sm p-2" type="password" placeholder="your secret"
+                                    name="password" required>
+                            </div>
+                            <button class="bg-sky-300 p-2 rounded-md py-2 px-5 my-3 font-semibold"
+                                type="submit">Login</button>
+                        </form>
+                        <p>New Member? <a class="text-sky-500 font-semibold" href="/signup">Signup</a></p>
+                        <% if (!locals.isLoggedIn) { %>
+                            <h4>You are required to log in to use our service.</h4>
+                            <% } %>
+    </div>
+
 </body>
 
 </html>

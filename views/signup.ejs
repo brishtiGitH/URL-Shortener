@@ -6,37 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-    </style>
+
 </head>
 
-<body>
-    <h1>Sign Up</h1>
+<body class="p-10 text-center">
+    <h1 class="text-xl m-3 font-semibold">Sign Up</h1>
     <% if (locals.error) { %>
         <h4>
             <%= error %>
         </h4>
         <% } %>
             <form action="/user/signup" method="POST">
-                <div>
+                <div class="my-2">
                     <label for="name">Name</label>
-                    <input type="text" placeholder="your name" name="name" required>
+                    <input class="border mx-3 rounded-sm p-2" type="text" placeholder="your name" name="name" required>
                 </div>
-                <div>
+                <div class="my-2">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="your email" name="email" required>
+                    <input class="border mx-3 rounded-sm p-2" type="email" placeholder="your email" name="email"
+                        required>
                 </div>
-                <div>
+                <div class="my-2">
                     <label for="password">Password</label>
-                    <input type="password" placeholder="your secret" name="password" required>
+                    <input class="border mx-3 rounded-sm p-2" type="password" placeholder="your secret" name="password"
+                        required>
                 </div>
-                <button type="submit">Signup</button>
+                <button class="bg-sky-300 p-2 rounded-md py-2 px-5 my-3 font-semibold" type="submit">Signup</button>
             </form>
-            <p>Already a member? <a href="/login">Log In</a></p>
+            <p>Already a member? <a class="text-sky-500 font-semibold" href="/login">Log In</a></p>
 </body>
 
 </html>
